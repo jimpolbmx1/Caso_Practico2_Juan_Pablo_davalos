@@ -1,0 +1,18 @@
+#Paso4: Genero los servicios para los slaves
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-slave
+  labels: # Es imporante que los labels coincidan con los del deploy
+    app: redis
+    role: slave
+    tier: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 6379
+  selector: # Uso el selector para hacer match
+    app: redis
+    role: slave
+    tier: backend
+

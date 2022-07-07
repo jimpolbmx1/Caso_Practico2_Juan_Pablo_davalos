@@ -1,0 +1,18 @@
+#Paso5: Ultimo paso crear el servicio para el php
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  labels:
+    app: guestbook
+    tier: frontend
+spec:  
+  type: NodePort 
+  #type: LoadBalancer
+  ports:
+  - port: 80
+    nodePort: 30000
+
+  selector:
+    app: guestbook
+    tier: frontend

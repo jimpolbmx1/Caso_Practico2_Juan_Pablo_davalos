@@ -1,0 +1,14 @@
+---
+
+# Este playbook va a correr todos los playbooks relacionados con la instalacion de kuberentes
+  
+# Configuraciones comunes de todos los nodos
+- import_playbook: 01-common.yml
+# Configuraciones del nodo nfs
+- import_playbook: 02-nfs.yml
+# Configuraciones de los nodos masters y workers
+- import_playbook: 03-master-worker.yml
+# Configuraciones de los nodos Master
+- import_playbook: 04-master.yml
+# Configuraciones de los nodos Worker
+- import_playbook: 05-workers.yml

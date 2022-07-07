@@ -1,0 +1,4 @@
+---
+
+files: ['Paso1_redis-master.yaml', 'Paso2_redis-master-service.yaml', 'Paso3_redis-slave.yaml', 'Paso4_redis-slave-service.yaml', 'Paso5_frontend-service.yaml','Paso6_frontend.yaml']
+

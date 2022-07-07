@@ -1,0 +1,27 @@
+#Paso3: Creamos los esclavos de redis. Recordar que redis usa los esclavos como cache de la DB principal
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment # Es un deployment por que vamos a crear 2 replicas 
+metadata:
+  name: redis-slave
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+      role: slave
+      tier: backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: slave
+        tier: backend
+    spec:
+      containers:
+      - name: slave
+        image: gcr.io/google_samples/gb-redisslave:v3
+        env: #Creamos una variable de entorno con el valor de dns
+        - name: GET_HOSTS_FROM  #De donde va a recuperarse la informacion de los hosts. Es una variable de entorno propia de REDIS de la imagen de REDIS
+          value: dns

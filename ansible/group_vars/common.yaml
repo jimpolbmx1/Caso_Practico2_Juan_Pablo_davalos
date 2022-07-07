@@ -1,0 +1,4 @@
+---
+
+kubernets_domain: 'jdavalos.com'
+common_packages: ['net-tools', 'wget', 'nfs-utils']

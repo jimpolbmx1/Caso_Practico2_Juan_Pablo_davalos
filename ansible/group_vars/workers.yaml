@@ -1,0 +1,5 @@
+---
+
+# Obtenemos el comando mostrado luego de ejecutar kubeadm init --pod-network-cidr en el playbook anterior
+
+token_hash: "{{ hostvars['master1'].token_hash }}"

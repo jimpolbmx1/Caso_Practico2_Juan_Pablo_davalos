@@ -1,0 +1,4 @@
+---
+crio_packages: ['cri-o']
+docker_packages: ['containerd.io']
+kubernetes_packages: ['kubelet', 'kubeadm', 'kubectl']

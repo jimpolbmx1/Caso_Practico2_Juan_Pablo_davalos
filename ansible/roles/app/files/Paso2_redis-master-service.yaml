@@ -1,0 +1,20 @@
+#Paso2: Creamos un servico que se asocia a los pods con el objetivo de exponer el servicio al exterior y asignarle una IP externa.
+#Hay que recordar que por si un pod no se puede ver con otro pod u con el exterior sin tener un servicio asociado
+apiVersion: v1
+kind: Service # tipo servico para exponer la aplicacion
+metadata:
+  name: redis-master # el nombre
+  labels: # importante las labeles
+    app: redis
+    role: master
+    tier: backend
+spec:
+  type: ClusterIP # Tipo clusterIP para que no salga al exterior y solo vea en los elementos del cluster
+  ports:
+  - port: 6379 #port que apunta al service desde el el pod
+    targetPort: 6379 # port de origen desde el pod
+  selector: # para aplicar el servicio a todos los pods con las etiquetas
+    app: redis
+    role: master
+    tier: backend
+

@@ -1,0 +1,40 @@
+
+- debug:
+    msg: "El Token Comando para hacer el join es: {{ token_hash }}"
+  when: token_hash is defined
+  
+- name: Habilitamos los puertos necesarios para unirse al clúster 10250
+  firewalld:
+    port: 10250/tcp
+    permanent: true
+    zone: public
+    state: enabled
+  become: yes
+  
+- name: Habilitamos los puertos necesarios para unirse al clúster 30000 32767
+  firewalld:
+    port: 30000-32767/tcp
+    permanent: true
+    zone: public
+    state: enabled
+  become: yes
+  
+- name: Reiniciando el servicio Firewalld 
+  systemd:
+    name: firewalld
+    state: restarted
+  become: yes
+  
+- name: Mostramos el comando de unión del worker al master
+  debug:
+    msg: "Se ejecutará: {{ token_hash }}"
+
+- name: Unimos el Worker al clúster Kubernetes
+  shell: "{{ token_hash }}"
+  register: kubeadm_join
+  become: yes
+  
+- name: Resultado de la unión del Worker al clúster
+  debug:
+    msg: "{{ kubeadm_join.stdout_lines }}"
+  

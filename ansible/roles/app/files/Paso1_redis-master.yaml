@@ -1,0 +1,26 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment # Este ejemplo es de un Deplyment que sirve para definir el numero de replicas, para este ejemplo vamos a usar un redis que es una db
+metadata:
+  name: redis-master
+  labels:
+    app: redis
+spec:
+  selector: # para buscar todos los pods que tengan los labels definidos a continuacion. El selector es como un where que busca los pods que va a gobernar
+    matchLabels:
+      app: redis
+      role: master
+      tier: backend
+  replicas: 1 # vamos a tener 1 sola replica por que es un master
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: master
+        tier: backend
+    spec:
+      containers:
+      - name: master
+        image: k8s.gcr.io/redis:e2e  # or just image: redis
+        ports:
+        - containerPort: 6379 #puerto por donde va a escuchar la aplicacion de redis que tiene que estar abierta a todos los nodos
+
