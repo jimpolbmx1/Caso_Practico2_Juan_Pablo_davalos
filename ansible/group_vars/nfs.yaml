@@ -1,3 +1,5 @@
 ---
 
 nfs_packages: ['nfs-utils', 'nfs4-acl-tools']
+private_ip_master: "10.0.1.10"
+private_ip_worker: "10.0.1.11"

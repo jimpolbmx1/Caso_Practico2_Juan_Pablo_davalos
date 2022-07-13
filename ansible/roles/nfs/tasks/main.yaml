@@ -14,15 +14,14 @@
 - name: Agregamos los masters al /etc/exports
   lineinfile:
     dest: /etc/exports
-    line: "/srv/nfs/ {{ hostvars[item].ansible_host }}(rw,sync)"
+    line: "/srv/nfs/ {{ private_ip_master }}(rw,sync,no_root_squash)"
     state: present
-  with_items: "{{ groups.master }}"
   become: yes
   
 - name: Agregamos los workers al /etc/exports
   lineinfile:
     dest: /etc/exports
-    line: "/srv/nfs/ {{ hostvars[item].ansible_host }}(rw,sync)"
+    line: "/srv/nfs/ {{ private_ip_worker }}(rw,sync)"
     state: present
   when: hostvars[item].ansible_host is defined
   with_items: "{{ groups.workers }}"
@@ -37,7 +36,7 @@
   become: yes
   
 - name: Recargamos la configuración del fichero /etc/exports
-  shell: exportfs -r
+  shell: exportfs -a
   become: yes
 
 - name: Habilitamos servicios usados por NFS nfs

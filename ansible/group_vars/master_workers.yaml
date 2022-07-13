@@ -2,3 +2,4 @@
 crio_packages: ['cri-o']
 docker_packages: ['containerd.io']
 kubernetes_packages: ['kubelet', 'kubeadm', 'kubectl']
+private_ip_nfs: "10.0.1.12"
