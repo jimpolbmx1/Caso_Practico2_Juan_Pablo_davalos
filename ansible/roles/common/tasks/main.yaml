@@ -42,19 +42,14 @@
     state: disabled
   become: yes
 
-- name: Instalando Chrony (Red Hat/Centos)
+- name: Instalando Chrony 
   dnf:
     name: chrony
     state: present
   become: yes
 
-# Yo soy de Lima/Perú ;)
-#- name: Configurando el timezone a America/Lima
-#  timezone:
-#    name: America/Lima
-#  become: yes
-  
-- name: Habilitar servicio Chronyd (Red Hat)
+ 
+- name: Habilitar servicio Chronyd 
   systemd:
     name: chronyd
     state: started
