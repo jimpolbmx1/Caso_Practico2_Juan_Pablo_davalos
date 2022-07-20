@@ -31,24 +31,24 @@ variable "vms" {
 variable "subscription_id" {
   type        = string
   description = "subscription_id"
-  default     = "3038df55-5424-492e-b9b5-eafbdac21ff7"
+  default     = "3038df55-5424-492e-b9b5-sdasfsdfs3453"
 }
 
 variable "client_id" {
   type        = string
   description = "client_id"
-  default     = "21280ce6-5127-4813-a9d9-581db0f2abf3"
+  default     = "21280ce6-5127-4813-a9d9-dsf45dfw43"
 }
 
 variable "client_secret" {
   type        = string
   description = "client_secret"
-  default     = "9zU8Q~UnzAfT2MKrgRho0NEcNHfYALOO1x7pMdgD"
+  default     = "9zU8Q~UdgsdfgrTerw543rfsdfsdf"
 }
 
 variable "tenant_id" {
   type        = string
   description = "tenant_id"
-  default     = "899789dc-202f-44b4-8472-a6d40f9eb440"
+  default     = "899789dc-202f-44b4-8472-dsfsgdf34t54sd4"
 }
 
